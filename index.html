@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
+<style> 
+    .top_bar {
+        font-size: 23px;
+    }
+    input[type=button] {
+        font-size: 23px
+    }
+    input[type=date] {
+        font-size: 23px
+    }
+</style>
 <head>
     <meta charset="UTF-8">
 
@@ -11,18 +21,17 @@
     <script defer src="index.js" charset="utf-8"></script>
 </head>
 <body>
-    <div id="dates">
-        <br>
-        <input id="begin" type="date">
-        <input id = "end"  type="date">
-    </div><br>
-    <div id="buttons">
-        
-        <button type="button" name="submit" onclick="searchData()">Search</button>
-        <button type="button" name="clear" onclick="clearDates()">Clear dates</button>
-    </div>
-    <div id="price_fall"></div>
-    <div id="container">
+    <div class="top_bar">
+            <br>
+            <input id="begin" type="date">
+            <input id = "end"  type="date">
+        <br><br>
+            <input type="button" name="submit" onclick="searchData()" value="Search"/>
+            <input type="button" name="clear" onclick="clearDates()"value = "Clear dates"/>
+        <div id="price_fall"></div>
+        <div id="container">
+        </div>
+    
     </div>
 </body>
 <script>
@@ -44,7 +53,7 @@
 
         var unixStart = new Date(startDate).getTime() / 1000.0;
         var unixEnd = new Date(endDate);
-        unixEnd.setHours(unixEnd.getHours() + 24)
+        unixEnd.setHours(unixEnd.getHours() + 1)
         unixEnd = unixEnd.getTime() /1000.0
 
         api_url = `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${unixStart}&to=${unixEnd}`;
