@@ -131,6 +131,7 @@
             
             catch {
                 highest_volume = fullArr[i][3];
+                day = fullArr[i][0];
                 console.log("error")
             }
                         
@@ -142,7 +143,7 @@
             //on top of the page, write highest row and biggest volume of all dates
             document.getElementById("price_fall").innerHTML += "<br>Price has decreased for " + fall + " days in a row" +
             " for the inputs from " + startDate + " and to " + endDate + "<br><br>" +
-            day+" with the highest trading volume: " + Number((highest_volume).toFixed(1)).toLocaleString() + "€";
+            day + " with the highest trading volume: " + Number((highest_volume).toFixed(1)).toLocaleString() + "€";
     });
 
 }
