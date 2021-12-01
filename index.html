@@ -159,17 +159,17 @@
             var highest_profit = 0;
             var check_profit = 0;
 
-            var rise = false;
+            var set_buy_loop = false;
             var decrease_only = true; 
             var x = 1
                 try {  
                     while(x < fullArr.length) {
                         while(fullArr[x][1]>fullArr[x-1][1]) {
                             decrease_only = false;
-                            if(rise == false)
+                            if(set_buy_loop == false)
                             {
                                 buy_day = x-1;
-                                rise = true;
+                                set_buy_loop = true;
                             }
                             check_profit = fullArr[x][1] - fullArr[buy_day][1]
                             if (check_profit > highest_profit) {
@@ -177,6 +177,9 @@
                                 sell_day = fullArr[x][0];
                             }
                             x++;
+                        }
+                        if (fullArr[x][1] < fullArr[buy_day][1]) {
+                            buy_day = x
                         }
                         x++;
                     }
@@ -190,12 +193,9 @@
             }
             else if (decrease_only == false) 
             {
-                document.getElementById("price_fall").innerHTML += "<br><br>You should buy bitcoin at " + fullArr[buy_day][0] + " and sell them at "+
-                sell_day;
-
+                document.getElementById("price_fall").innerHTML += "<br><br>You should buy bitcoin at " + fullArr[buy_day][0] + " and sell them at "+ sell_day;
             }
     });
 }
-
 </script>
 </html>
