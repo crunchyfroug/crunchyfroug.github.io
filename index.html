@@ -153,8 +153,8 @@
             " for the inputs from " + startDate + " and to " + endDate + "<br><br>" +
             day + " with the highest trading volume: " + Number((highest_volume).toFixed(1)).toLocaleString() + " €";
 
-            var buy_day = ""
-            var sell_day = ""
+            var buy_day = 0;
+            var sell_day = 0;
 
             var highest_profit = 0;
             var check_profit = 0;
@@ -162,6 +162,8 @@
             var set_buy_loop = false;
             var decrease_only = true; 
             var x = 1
+
+            var last_item = fullArr[fullArr.length-1];
                 try {  
                     while(x < fullArr.length) {
                         while(fullArr[x][1]>fullArr[x-1][1]) {
@@ -178,7 +180,7 @@
                             }
                             x++;
                         }
-                        if (fullArr[x][1] < fullArr[buy_day][1]) {
+                        if (fullArr[x][1] < fullArr[buy_day][1] && fullArr[x][0] != last_item[0]) {
                             buy_day = x
                         }
                         x++;
